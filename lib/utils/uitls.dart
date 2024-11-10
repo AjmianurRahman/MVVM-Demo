@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class Utils {
+
+  //? Toast
   static toastMessage(String message) {
     Fluttertoast.showToast(msg: message);
   }
 
+  //? FlushBar
   static flushBarError(String message, BuildContext context) {
     showFlushbar(
       context: context,
@@ -29,6 +32,7 @@ class Utils {
     );
   }
 
+  //? SnackBar
   static snackBar(String message, BuildContext context) {
     return ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(backgroundColor: Colors.black, content: Text(message)));
