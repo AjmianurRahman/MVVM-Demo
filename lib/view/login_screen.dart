@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:mvvm_architecture/res/components/rountd_button.dart';
 import 'package:mvvm_architecture/utils/routes/routes_name.dart';
 import 'package:mvvm_architecture/utils/uitls.dart';
+import 'package:mvvm_architecture/view_model/auth_view_model.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -24,6 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authViewModel = Provider.of<AuthViewModel>(context);
+
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -80,7 +84,16 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * .3,
               ),
-              RoundButton(title: 'Login', loading: true, onPress: () {}),
+              RoundButton(
+                  title: 'Login',
+                  loading: authViewModel.loading,
+                  onPress: () {
+                    Map data = {
+                      'email': eCon.text.toString(),
+                      'password': pCon.text.toString()
+                    };
+                    authViewModel.loginApi(data, context);
+                  }),
             ],
           ),
         ),

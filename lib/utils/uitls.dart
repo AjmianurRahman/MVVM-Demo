@@ -31,6 +31,27 @@ class Utils {
       )..show(context),
     );
   }
+  //? FlushBar
+  static successFlushBarError(String message, BuildContext context) {
+    showFlushbar(
+      context: context,
+      flushbar: Flushbar(
+        forwardAnimationCurve: Curves.decelerate,
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: EdgeInsets.all(15),
+        backgroundColor: Colors.green.shade700,
+        reverseAnimationCurve: Curves.easeInOut,
+        message: message,
+        borderRadius: BorderRadius.circular(16),
+        positionOffset: 20,
+        icon: Icon(
+          Icons.done,
+          color: Colors.white,
+        ),
+        duration: Duration(seconds: 2),
+      )..show(context),
+    );
+  }
 
   //? SnackBar
   static snackBar(String message, BuildContext context) {
